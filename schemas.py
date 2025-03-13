@@ -26,3 +26,27 @@ class PaymentCreate(BaseModel):
     tenant_id: int
     room_id: int
     amount: float
+    status: Optional[str] = "pending"
+
+class RoomCreate(BaseModel):
+    number: str
+    area: float
+    price: float
+    status: Optional[str] = "available"
+
+class UserUpdate(BaseModel):
+    full_name: Optional[str]
+    phone_number: Optional[str]
+    email: Optional[str]
+    identity_card: Optional[str]
+
+class UserResponse(BaseModel):
+    id: int
+    full_name: str
+    email: str
+    phone_number: str
+    identity_card: str
+    role: str
+
+    class Config:
+        from_attributes = True
